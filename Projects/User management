@@ -1,4 +1,4 @@
-#Creating Local Users
+#Bash script to automate Linux user account creation, generate a password, set account details, and force password change on first login.
 
 #!/bin/bash
 
