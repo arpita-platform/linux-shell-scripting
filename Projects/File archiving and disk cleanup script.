@@ -1,0 +1,33 @@
+#Find files that are larger than 20 MB OR older than 10 days, compress them using gzip, and move them to an archive folder.
+
+#!/bin/bash
+
+BASE=/mnt/c/Users/Arpita/Pictures
+DAYS=10
+DEPTH=3
+RUN=0
+
+# Check if base directory exists
+if [ ! -d "$BASE" ]
+then
+    echo "Directory does not exist: $BASE"
+    exit 1
+fi
+
+# Create archive directory if it doesn't exist
+if [ ! -d "$BASE/archive" ]
+then
+    mkdir "$BASE/archive"
+fi
+
+# Find files larger than 20MB OR older than 10 days
+find "$BASE" -maxdepth "$DEPTH" -type f \( -size +20M -o -mtime +$DAYS \) | while read -r file
+do
+    if [ "$RUN" -eq 0 ]
+    then
+        echo "[$(date '+%Y-%m-%d %H:%M:%S')] Archiving $file ==> $BASE/archive"
+
+        gzip "$file" || exit 1
+        mv "$file.gz" "$BASE/archive" || exit 1
+    fi
+done
