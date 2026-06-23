@@ -20,4 +20,4 @@ Linux shell scripting repository covering Bash fundamentals, file handling, loop
   
 ### 4.Disk Space Monitoring and Email Alert Script
 - Checks disk utilization using the df command.
--Sends an alert email if disk usage exceeds the configured threshold.
+- Sends an alert email if disk usage exceeds the configured threshold.
