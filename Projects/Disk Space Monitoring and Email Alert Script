@@ -1,0 +1,21 @@
+# Disk Space Monitoring and Email Alert Script
+
+#!/bin/bash
+
+# Monitoring disk space
+
+FU=$(df -H | grep "/dev/sdd" | awk '{print $5}' | tr -d '%')
+TO="arpitameenakshi20@gmail.com"
+
+if [[ $FU -ge 20 ]]
+then
+    MSG="Warning, disk space is low - $FU %"
+
+    echo "$MSG"                    # Terminal output
+    echo "$MSG" | mail -s "Disk SPACE ALERT!!" $TO   # Email
+else
+    MSG="ALL good - $FU %"
+
+    echo "$MSG"                    # Terminal output
+    echo "$MSG" | mail -s "Disk Status OK" $TO       # Email
+fi
