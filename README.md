@@ -16,3 +16,8 @@ Linux shell scripting repository covering Bash fundamentals, file handling, loop
 ### 3. RAM Monitoring Script
 - Monitor available memory
 - Generate alerts when memory falls below threshold
+
+  
+### 4.Disk Space Monitoring and Email Alert Script
+- Checks disk utilization using the df command.
+-Sends an alert email if disk usage exceeds the configured threshold.
